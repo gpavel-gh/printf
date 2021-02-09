@@ -1,39 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/05 11:39:27 by gpavel            #+#    #+#             */
-/*   Updated: 2021/02/09 11:04:34 by gpavel           ###   ########.fr       */
+/*   Created: 2021/02/04 17:34:04 by gpavel            #+#    #+#             */
+/*   Updated: 2021/02/09 11:16:47 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_printf(char *str, ...)
+void	ft_putchar_fd(char c, int fd)
 {
-	int			cont;
-	int			x;
-	va_list		ap;
-	
-	va_start(ap, str);
-	x = 0;
-	cont = 0;
-	while (str[x] != '\0')
+	write(fd, &c, 1);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (!(!s))
 	{
-		if (str[x] == '%')
+		while (*s != '\0')
 		{
-			x++;
-			cont = cont + ft_printf_analyzer(&str[x], ap);
+			ft_putchar_fd(*s, fd);
+			s++;
 		}
-		else 
-			ft_putchar_fd(str[x], 0);
-			cont++;
-		x++;
 	}
-	va_end(ap);
-	
+}
+
+int	ft_putnbr_fd(int n, int fd)
+{
+	long int 	n2;
+	int			cont;
+
+	n2 = n;
+	cont = 0;
+	if (n2 < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n2 = n2 * -1;
+		cont = 1;
+	}
+	if (n2 > 9)
+		ft_putnbr_fd(n2 / 10, fd);
+	ft_putchar_fd((n2 % 10) + 48, fd);
+	cont ++;
 	return (cont);
 }
