@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_%xX.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/05 11:39:27 by gpavel            #+#    #+#             */
-/*   Updated: 2021/02/12 12:18:50 by gpavel           ###   ########.fr       */
+/*   Created: 2021/02/10 09:49:39 by gpavel            #+#    #+#             */
+/*   Updated: 2021/04/02 11:06:28 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_printf(char *str, ...)
+int			ft_printf_xX(va_list ap, char c)
 {
-	int			cont;
-	int			x;
-	va_list		ap;
-	
-	va_start(ap, str);
-	x = 0;
-	cont = 0;
-	while (str[x] != '\0')
+	unsigned int		x;
+	int		r;
+	int		cont;
+
+	x = (unsigned int)va_arg(ap, unsigned int);
+	cont = ft_putnbr_fd(x / 16, 0);
+	r = x % 16;
+	if (r <= 9)
+		cont = ft_putnbr_fd(r, 0);
+	else 
 	{
-		if (str[x] == '%')
-		{
-			x++;
-			cont = cont + ft_printf_analyzer(&str[x], ap);
-		}
-		else 
-			ft_putchar_fd(str[x], 0);
-			cont++;
-		x++;
+		r = r - 10;
+		if (c == 'x')
+			ft_putchar_fd(97 + r, 0);
+		if (c == 'X')
+			ft_putchar_fd(65 + r, 0);
 	}
-	va_end(ap);
-	
-	return (cont);
+	return (cont++);
 }

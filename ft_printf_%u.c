@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_%u.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/05 11:39:27 by gpavel            #+#    #+#             */
-/*   Updated: 2021/02/12 12:18:50 by gpavel           ###   ########.fr       */
+/*   Created: 2021/02/10 10:15:55 by gpavel            #+#    #+#             */
+/*   Updated: 2021/02/10 10:37:10 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_printf(char *str, ...)
+int			ft_printf_u(va_list ap)
 {
-	int			cont;
-	int			x;
-	va_list		ap;
-	
-	va_start(ap, str);
-	x = 0;
-	cont = 0;
-	while (str[x] != '\0')
-	{
-		if (str[x] == '%')
-		{
-			x++;
-			cont = cont + ft_printf_analyzer(&str[x], ap);
-		}
-		else 
-			ft_putchar_fd(str[x], 0);
-			cont++;
-		x++;
-	}
-	va_end(ap);
-	
-	return (cont);
+	char 	c;
+	int		cont;
+
+	c = (char)va_arg(ap, char *);
+	if (c >= ' ' && c <= '~')
+		cont = ft_putnbr_fd(c, 0);
+	else 
+		cont = 0;
+	return (cont); 
 }

@@ -1,4 +1,4 @@
-NAME = printf_program
+NAME = libftprintf.a
 
 NAMELIB = printflib.a
 
@@ -12,10 +12,14 @@ SRC	=	ft_printf.c \
 		ft_printf_analyzer.c \
 		ft_printf_%c.c \
 		ft_printf_%d.c \
-		ft_printf_%s.c
+		ft_printf_%s.c \
+		ft_printf_%xX.c \
+		ft_printf_%u.c \
+		ft_printf_%p.c 
+
 
 $(NAME): $(SRC)
-	$(CC) $(WFLAGS) $(SRC) -o $(NAME)
+	$(CC) -g3 $(WFLAGS) $(SRC) -o $(NAME)
 	./$(NAME)
 
 all: $(NAME)
@@ -27,6 +31,6 @@ fclean: clean
 	rm -f $(NAME)
 
 bonus:
-	@echo "No hay bonus"
+	@echo "No hay bonus jua, jua, jua."
 
 re: fclean all
