@@ -6,30 +6,62 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 09:49:39 by gpavel            #+#    #+#             */
-/*   Updated: 2021/04/02 11:06:28 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/04/11 12:54:25 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+static int	ft_print_hex(char *str, int i)
+{
+	int cont; 
+
+	cont = 0;
+	while (i >= 0)
+	{
+		ft_putchar_fd(str[i], 0);
+		i--;
+		cont++;
+	}
+	return (cont);
+}
+
+static int	ft_to_hex(int dn, char c,int cont)
+{
+	int		co;
+	int		r;
+	int		i;
+	char	str[100];
+
+	i = 0;
+	co = dn;
+	while (co != 0)
+	{
+		r = co % 16;
+		if (r < 10)
+			r = r + 48;
+		else 
+		{
+			if (c == 'x')
+				r = r + 87;
+			if (c == 'X')
+				r = r + 55;
+		}
+		str[i++] = r;
+		co = co / 16;
+	}
+	str[i] = '\0';
+	cont = ft_print_hex(str, i);
+	return (cont);
+}
+
 
 int			ft_printf_xX(va_list ap, char c)
 {
 	unsigned int		x;
-	int		r;
 	int		cont;
 
+	cont = 0;
 	x = (unsigned int)va_arg(ap, unsigned int);
-	cont = ft_putnbr_fd(x / 16, 0);
-	r = x % 16;
-	if (r <= 9)
-		cont = ft_putnbr_fd(r, 0);
-	else 
-	{
-		r = r - 10;
-		if (c == 'x')
-			ft_putchar_fd(97 + r, 0);
-		if (c == 'X')
-			ft_putchar_fd(65 + r, 0);
-	}
-	return (cont++);
+	cont = ft_to_hex(x, c, cont);
+	return (cont);
 }

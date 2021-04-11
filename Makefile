@@ -1,4 +1,4 @@
-NAME = libftprintf.a
+NAME = libftprintf
 
 NAMELIB = printflib.a
 
@@ -15,7 +15,7 @@ SRC	=	ft_printf.c \
 		ft_printf_%s.c \
 		ft_printf_%xX.c \
 		ft_printf_%u.c \
-		ft_printf_%p.c 
+		ft_printf_%p.c \
 
 
 $(NAME): $(SRC)
