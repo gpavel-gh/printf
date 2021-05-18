@@ -3,8 +3,11 @@
 
 int	main()
 {
+	char	*c = "Hello world";
 
-	printf("%X, -%x- %x, %X, %x, %X\n", 'a', 'a', 200, 70, 633, 633);
+	printf("%p\n", &c);
+
+	printf("%X, -%x- %x, %X, %x, %X\n", -16, -3, -4, -5, -6, -7);
 	
 	return (0);
 }

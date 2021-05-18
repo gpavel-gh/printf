@@ -6,7 +6,7 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 11:39:45 by gpavel            #+#    #+#             */
-/*   Updated: 2021/04/11 13:04:01 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/05/13 16:56:44 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ int main()
 	int 	x;
 	int		x1;
 
-	x = printf("%X, -%x- %x, %X, %x, %X\n", 'a', 'a', -1, 0, -2, 633);
+	x = printf("%X\n", -200);
 	printf("%d\n", x);
 
-	x1 = ft_printf("%X, -%x- %x, %X, %x, %X\n", 'a', 'a', -1, 0, -2, 633);
-	printf("%d\n", x1);
-	
-	
+	x1 = ft_printf("%X\n", -200);
+	printf("\n%d\n", x1);	
 	
 	return (0);
 
