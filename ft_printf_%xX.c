@@ -6,105 +6,68 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 09:49:39 by gpavel            #+#    #+#             */
-/*   Updated: 2021/05/13 17:16:11 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/05/18 20:04:51 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-static int	ft_print_hex(char *str, int i)
+static char	*ft_set_str(char *str, unsigned long int i)
 {
-	int cont; 
+	char	aux[100];
+	int		len;
+	int		n;
 
-	cont = 0;
-	while (i >= 0)
+	len = 0;
+	n = 0;
+	while (i)
 	{
-		ft_putchar_fd(str[i], 0);
-		i--;
-		cont++;
+		i /= 16;
+		len++;
 	}
-	return (cont);
+	while (str)
+		str++;
+	while (len-- > 0)
+		aux[n++] = *str--;
+	aux[n] = '\0';
+	return (aux);
 }
 
-static int	ft_to_hex(int dn, char c,int cont)
+static char	*ft_decimal_to_hex(unsigned long int dn, char c)
 {
-	int		co;
-	int		r;
-	int		i;
-	char	str[100];
+	unsigned long int	co;
+	unsigned int		r;
+	int					i;
+	char				str[100];
 
 	i = 0;
 	co = dn;
-	while (co != 0)
+	while (co)
 	{
 		r = co % 16;
 		if (r < 10)
 			r = r + 48;
-		else 
+		else
 		{
 			if (c == 'x')
-				r = r + 87;
+				r += 87;
 			if (c == 'X')
-				r = r + 55;
+				r += 55;
 		}
 		str[i++] = r;
-		co = co / 16;
+		co /= 16;
 	}
-
 	str[i] = '\0';
-	cont = ft_print_hex(str, i);
-	return (cont);
-}
-
-static int	ft_to_negative_hex(int	x, char c, int cont)
-{
-	int r;
-	int i;
-	char str[9] = "FFFFFFFF";
-	int d;
-
-	i = -1;
-	d = x;
-	while (x != 0 && i < 7)
-	{
-		i++;
-		r = x % 16;
-		if (r > 0 && r < 7)
-		{
-			if (c == 'x')
-				str[7 - i] = 103 - r;
-			if (c == 'X')
-				str[7 - i] = 71 - r;
-		}
-		else 
-		{
-			if (r == 0)
-				r = 16;
-			str [7 - i] = 64 - r;
-		}
-		x = x / 16;
-		if (x == 1 && d != 16)
-			x++;
-	}
-	ft_putstr_fd(str, 0);
-	return (cont = 8);
-
+	return (str);
 }
 
 int			ft_printf_xX(va_list ap, char c)
 {
-	int		x;
-	int		cont;
+	unsigned long int		x;
+	char	*str;
 
-	cont = 0;
-	x = (int)va_arg(ap, int);
-	if (x == 0)
-		ft_print_hex("0", 0);
-	if (x < 0)
-	{
-		x = x * -1;
-		cont = ft_to_negative_hex(x, c, cont);
-	}
-	else 
-		cont = ft_to_hex(x, c, cont);
-	return (cont);
+	x = (unsigned long int)va_arg(ap, int);
+	str = ft_decimal_to_hex(x, c);
+	str = ft_set_str(str, x);
+	printf("<%s>", str);
+	return (1);
 }
