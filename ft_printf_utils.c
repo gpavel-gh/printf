@@ -6,7 +6,7 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:34:04 by gpavel            #+#    #+#             */
-/*   Updated: 2021/02/09 11:16:47 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/05/20 16:04:05 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,26 @@ int	ft_putnbr_fd(int n, int fd)
 	ft_putchar_fd((n2 % 10) + 48, fd);
 	cont ++;
 	return (cont);
+}
+
+void	ft_bzero(void *str, size_t n)
+{
+	size_t		i;
+
+	i = 0;
+	while (i < n)
+	{
+		((char *)str)[i] = 0;
+		i++;
+	}
+}
+
+char	*ft_strnew(size_t n)
+{
+	char	*str;
+
+	if (!(str = (char *)malloc(sizeof(char) * n)))
+		return (NULL);
+	ft_bzero(str, n);
+	return (str);
 }

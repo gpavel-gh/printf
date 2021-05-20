@@ -6,7 +6,7 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:33:56 by gpavel            #+#    #+#             */
-/*   Updated: 2021/04/06 19:57:36 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/05/20 16:05:22 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,19 @@ int				ft_printf_analyzer(char *str, va_list ap);
 int				ft_printf_s(va_list ap);
 int				ft_printf_d(va_list ap);
 int				ft_printf_c(va_list ap);
-int				ft_printf_xX(va_list ap, char c);
+char			*ft_printf_xX(va_list ap, char c);
 int				ft_printf_u(va_list ap);
-int				ft_printf_p(va_list ap);
+char			*ft_printf_p(va_list ap);
 
+
+
+//				*/ U T I L S \*         //
 
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
 int				ft_putnbr_fd(int n, int fd);
+char			*ft_strnew(size_t n);
+void			ft_bzero(void *str, size_t n);
 
 
 #endif

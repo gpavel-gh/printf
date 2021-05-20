@@ -7,8 +7,8 @@ int	main()
 
 	printf("%p\n", &c);
 
-	printf("%X, -%x- %x, %X, %x, %X\n", -16, -3, -4, -5, -6, -7);
-	
+	printf("%%%%X, -%x- %x, %X, %x, %X\n", -16, -3, -4, -5, -6, -7);
+
 	return (0);
 }
 
