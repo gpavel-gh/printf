@@ -16,6 +16,7 @@ SRC	=	ft_printf.c \
 		ft_printf_%xX.c \
 		ft_printf_%u.c \
 		ft_printf_%p.c \
+		ft_printf_precision.c \
 
 
 $(NAME): $(SRC)

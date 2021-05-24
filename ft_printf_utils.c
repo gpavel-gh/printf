@@ -6,15 +6,28 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:34:04 by gpavel            #+#    #+#             */
-/*   Updated: 2021/05/20 16:04:05 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/05/24 18:02:38 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar_fd(char c, int fd)
+char	*ft_strnew(size_t n)
+{
+	char	*str;
+
+	if (!(str = (char *)malloc(sizeof(char) * n)))
+		return (NULL);
+	str[n] = '\0';
+	while (n-- != 0)
+		str[n] = '\0';
+	return (str);
+}
+
+int		ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
+	return (1);
 }
 
 void	ft_putstr_fd(char *s, int fd)
@@ -59,14 +72,4 @@ void	ft_bzero(void *str, size_t n)
 		((char *)str)[i] = 0;
 		i++;
 	}
-}
-
-char	*ft_strnew(size_t n)
-{
-	char	*str;
-
-	if (!(str = (char *)malloc(sizeof(char) * n)))
-		return (NULL);
-	ft_bzero(str, n);
-	return (str);
 }

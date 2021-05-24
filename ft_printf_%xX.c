@@ -6,21 +6,24 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:27:41 by gpavel            #+#    #+#             */
-/*   Updated: 2021/05/20 16:22:51 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/05/24 19:00:19 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-static char	ft_take_value(unsigned long int n, char c)
+#include "ft_printf.h"
+
+static char	ft_take_value(unsigned int n, char c)
 {
 	char				x;
 
-	x = 40;
+	x = 48;
 	if (n <= 9)
 		x += n;
-	x += 47;
-	if (c == 'X')
-		x -= 32;
+	else
+	 	if (c == 'x')
+			x = x + 39 + n;
+	 	if (c == 'X')
+			x = x + 7 + n;
 	return (x);
 }
 static int	ft_take_len(unsigned long int nb, unsigned long int base)
@@ -36,7 +39,7 @@ static int	ft_take_len(unsigned long int nb, unsigned long int base)
 	return (len);
 }
 
-char		*ft_printf_xX(unsigned long int	nb, unsigned int base, char c)
+char		*ft_printf_xX(unsigned long int	nb, int base, char c)
 {
 	unsigned long int	n;
 	unsigned int		r;
@@ -52,6 +55,8 @@ char		*ft_printf_xX(unsigned long int	nb, unsigned int base, char c)
 	}
 	n = nb;
 	len = ft_take_len(nb, base);
+	if (!(str = ft_strnew(len)))
+		return (NULL);
 	while (n)
 	{
 		r = (n % base);

@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_precision.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/05 11:39:27 by gpavel            #+#    #+#             */
-/*   Updated: 2021/05/24 16:06:49 by gpavel           ###   ########.fr       */
+/*   Created: 2021/05/24 17:10:13 by gpavel            #+#    #+#             */
+/*   Updated: 2021/05/24 18:09:54 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_printf(char *str, ...)
+int		ft_precision(va_list ap, char c)
 {
-	int			cont;
-	int			x;
-	va_list		ap;
-	
-	va_start(ap, str);
-	x = 0;
-	cont = 0;
-	while (str[x] != '\0')
-	{
-		if (str[x] == '%')
-		{
-			x++;
-			cont = cont + ft_printf_analyzer(&str[x], ap);
-		}
-		else 
-			ft_putchar_fd(str[x], 0);
-			cont++;
-		x++;
-	}
-	va_end(ap);
-	
-	return (cont);
-}
+	unsigned long int	x;
+	char				*str;
+
+	x = (unsigned long int)va_arg(ap, unsigned long int);
+	str = ft_printf_xX(x, 16, c);
+	if (str)
+		printf("\n-%%xX[%s]-\n", str);
+
+	return (1);
+} 
