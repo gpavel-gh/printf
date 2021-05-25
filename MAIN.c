@@ -6,7 +6,7 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 11:39:45 by gpavel            #+#    #+#             */
-/*   Updated: 2021/05/24 19:20:21 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/05/25 17:53:29 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int main()
 {
-	
+
 	int 	x;
 	int		x1;
-	char 	*str;
+
 
 	x = printf("%*.*d\n", 10, 10, 1);
 	printf("%d\n", x);
 
-	x1 = ft_printf("%p\n", &str);
+	x1 = ft_printf("%p\n", 0);
 	printf("\n%d\n", x1);
 
 	return (0);

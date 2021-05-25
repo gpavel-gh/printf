@@ -6,7 +6,7 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 17:10:13 by gpavel            #+#    #+#             */
-/*   Updated: 2021/05/24 18:09:54 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/05/25 16:50:34 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,4 @@ int		ft_precision(va_list ap, char c)
 		printf("\n-%%xX[%s]-\n", str);
 
 	return (1);
-} 
+}

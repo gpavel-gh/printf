@@ -6,7 +6,7 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:51:26 by gpavel            #+#    #+#             */
-/*   Updated: 2021/05/24 17:41:10 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/05/25 16:29:31 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int			ft_printf_analyzer(char *str, va_list ap)
 
 	cont = 0;
 	if (*str == '%')
-		cont = ft_putchar_fd('%', 0);
+		ft_putchar_fd('%', 0);
+		cont++;
 	if (*str == 'd' || *str == 'i')
 		cont = cont + ft_printf_d(ap);
 	if (*str == 's')
@@ -30,6 +31,6 @@ int			ft_printf_analyzer(char *str, va_list ap)
 	if (*str == 'u')
 		cont = cont + ft_printf_u(ap);
 	if (*str == 'p')
-		cont = cont + ft_precision(ap, 'x');
+		cont = cont + ft_printf_p(ap);
 	return (cont);
 }

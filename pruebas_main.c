@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include "ft_printf.h"
 
 int	main()
 {
 	char	*c = "Hello world";
+	char	*str = "hello there im using ehatsapp";
 
 	printf("[%i]", printf("%p\n", &c));
 
@@ -49,11 +49,7 @@ int	main()
 
 	printf("(%i)\n",printf("[  printf ] %%-*.*i (10, 7, -1526): [%-*.*i]\n", 10, 7, -1526));
 
-	printf("(%i)\n",printf("[  printf ] %%*.*c (-10, 8, \'c\'): [%*.*c](?)\n", -10, 8, 'c'));//CASO EXTRAÑO
-	
-	
-	printf("(%i)\n",printf("[  printf ] %%*.*c (8, 8, \'c\'):  [%*.*c](?)\n", 8, 8, 'c'));//CASO EXTRAÑO
-
+	printf("(%i)\n",printf("[  printf ] Puntero %%*p (15, str): [%*p]\n",15, str));
 
 
 	return (0);

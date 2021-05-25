@@ -6,7 +6,7 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:34:04 by gpavel            #+#    #+#             */
-/*   Updated: 2021/05/24 18:02:38 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/05/25 16:21:53 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ char	*ft_strnew(size_t n)
 	return (str);
 }
 
-int		ft_putchar_fd(char c, int fd)
+void		ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
-	return (1);
 }
 
 void	ft_putstr_fd(char *s, int fd)
