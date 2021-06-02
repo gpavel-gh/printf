@@ -6,7 +6,7 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:33:56 by gpavel            #+#    #+#             */
-/*   Updated: 2021/05/25 16:36:05 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/05/31 19:05:16 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+
+	struct mystruct
+	{
+		long int		p1;
+		long int		p2;
+
+	}var;
+
 
 int				main(void);
 int				ft_printf(char *str, ...);

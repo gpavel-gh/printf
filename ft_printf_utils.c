@@ -6,7 +6,7 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:34:04 by gpavel            #+#    #+#             */
-/*   Updated: 2021/05/25 16:21:53 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/05/27 17:02:45 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,25 @@ void	ft_bzero(void *str, size_t n)
 		((char *)str)[i] = 0;
 		i++;
 	}
+}
+
+int		ft_atoi(char *str)
+{
+	long int		i;
+	long int		neg;
+	long int		result;
+
+	i = 0;
+	neg = 1;
+	result = 0;
+	if (str[i] == '-')
+	{
+		neg = -1;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + (long long int)(str[i] - 48);
+		i++;
+	}
+	return (result * neg);
 }
