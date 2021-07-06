@@ -6,43 +6,53 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:51:26 by gpavel            #+#    #+#             */
-/*   Updated: 2021/06/02 18:54:33 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/07/06 15:28:28 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char			ft_analyze_str_pre(va_list ap, char *str)
+static void 			ft_get_precision_val(va_list ap, char *str)
 {
 	int				i;
-	int				x;
 	struct mystruct var;
 
 	i = 0;
-	x = 0;
-	if (*str == '.' && !(var.p1))
-		
+	var.p1 = ft_get_pre1_val(var.p1, str, ap);
+
+}
+static int		ft_get_pre1_val(int	x, char *str, va_list ap)
+{
+	int 	i;
+	int		x;
+
+	if (*str == '.')
+		return (0);
+	i = 1;
 	if (*str == '*')
 	{
-		var.p1 = (long int)va_arg(ap, long int);
-		x = 1;
+		x = (long int)va_arg(ap, int);
 	}
-	if (*str == '-' || (*str == '0' && *str <= '9'))
+	if (*str == '-')
+		i *= -1; 
+	while (*str == '0' && *str <= '9')
 	{
-		var.p1 = ft_atoi(str);
-		x *= ft_count_();
+		x = *str + 48;
+		str++;
 	}
-
-
-	return (i);
+	return (x);
 }
+
 
 static int			ft_analyzer_precision(va_list ap, char *str)
 {
 	char			conversion;
 	struct mystruct var;
 
-	conversion = ft_analyze_str_pre(ap, str);
+	ft_analyze_str_pre(ap, str);
+
+
+
 
 
 
