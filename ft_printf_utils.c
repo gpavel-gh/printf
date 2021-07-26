@@ -6,7 +6,7 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:34:04 by gpavel            #+#    #+#             */
-/*   Updated: 2021/05/27 17:02:45 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/07/26 14:12:39 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-int	ft_putnbr_fd(int n, int fd)
+int		ft_putnbr_fd(int n, int fd)
 {
 	long int 	n2;
 	int			cont;
@@ -92,4 +92,16 @@ int		ft_atoi(char *str)
 		i++;
 	}
 	return (result * neg);
+}
+
+int		ft_strlen(const char *str)
+{
+	int n;
+
+	n = 0;
+	while (str[n] != '\0')
+	{
+		n++;
+	}
+	return (n);
 }

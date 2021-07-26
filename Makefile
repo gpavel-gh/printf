@@ -1,10 +1,10 @@
-NAME = libftprintf
+NAME = ft_printf
 
-NAMELIB = printflib.a
+NAMELIB = ft_printf.a
 
 CC = gcc
 
-WFLAGS = -Wall -Werror -Wextra 
+WFLAGS = -Wall -Werror -Wextra
 
 SRC	=	ft_printf.c \
 		MAIN.c \
@@ -16,14 +16,20 @@ SRC	=	ft_printf.c \
 		ft_printf_%xX.c \
 		ft_printf_%u.c \
 		ft_printf_%p.c \
-		ft_printf_precision.c \
+		ft_get_precision.c \
+		ft_precision_p.c \
 
+OBJ = $(SRC:.c=.o)
+
+all: $(NAMELIB)
 
 $(NAME): $(SRC)
-	$(CC) -g3 $(WFLAGS) $(SRC) -o $(NAME)
+	$(CC) $(WFLAGS) -g3 $(SRC) -o $(NAME)
 	./$(NAME)
 
-all: $(NAME)
+$(NAMELIB): $(OBJ)
+	ar rc $(NAME) $(OBJ)
+	ranlib$(NAME)
 
 clean:
 	rm -f $(OBJ)
@@ -31,7 +37,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
+re: fclean all
+
 bonus:
 	@echo "No hay bonus jua, jua, jua."
-
-re: fclean all

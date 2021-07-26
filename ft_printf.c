@@ -6,7 +6,7 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 11:39:27 by gpavel            #+#    #+#             */
-/*   Updated: 2021/05/24 16:06:49 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/07/26 16:15:04 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int			ft_printf(char *str, ...)
 {
-	int			cont;
+	int			*cont;
 	int			x;
 	va_list		ap;
-	
+
 	va_start(ap, str);
 	x = 0;
 	cont = 0;
@@ -26,14 +26,13 @@ int			ft_printf(char *str, ...)
 		if (str[x] == '%')
 		{
 			x++;
-			cont = cont + ft_printf_analyzer(&str[x], ap);
+			cont = cont + ft_printf_analyzer(&str[x], ap, cont);
 		}
-		else 
+		else
 			ft_putchar_fd(str[x], 0);
 			cont++;
 		x++;
 	}
 	va_end(ap);
-	
 	return (cont);
 }

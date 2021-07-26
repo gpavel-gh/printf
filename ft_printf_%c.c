@@ -6,7 +6,7 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 12:09:12 by gpavel            #+#    #+#             */
-/*   Updated: 2021/02/11 11:10:46 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/07/19 15:12:46 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 int			ft_printf_c(va_list ap)
 {
 	char		c;
-	int			cont;
 
 	c = (char)va_arg(ap, char *);
 	ft_putchar_fd(c, 0);
-	return (cont = 1);
+	return (1);
 }
