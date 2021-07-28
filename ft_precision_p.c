@@ -6,7 +6,7 @@
 /*   By: gpavel <gpavel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 14:55:40 by gpavel            #+#    #+#             */
-/*   Updated: 2021/07/26 14:09:44 by gpavel           ###   ########.fr       */
+/*   Updated: 2021/07/28 14:41:37 by gpavel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		ft_printf_precision_p(va_list ap, int *cont, struct mystruct var)
 	char	*str;
 	int		strlen;
 
-	str = ft_printf_p(ap, cont);
+	str = ft_printf_p(ap);
 	strlen = ft_strlen(str);
 	while (var.p1-- > strlen)
 	{
